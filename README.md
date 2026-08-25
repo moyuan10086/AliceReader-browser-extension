@@ -1,6 +1,6 @@
 <br />
 <p align="center">
-  <img src="docs/reading-page.png" alt="AliceReader browser preview" width="900">
+  <img src="docs/alice-logo.png" alt="AliceReader logo" width="180" height="180">
   <h2 align="center" style="font-weight: 600">AliceReader Browser Extension</h2>
   <p align="center">
     <img src="https://img.shields.io/github/license/moyuan10086/AliceReader-browser-extension?style=flat-square" />
