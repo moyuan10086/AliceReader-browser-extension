@@ -1,34 +1,70 @@
 # AliceReader Browser Extension
 
-AliceReader 是一个 Chrome/Edge Manifest V3 浏览器扩展，用于朗读网页中选中的文本。
+![AliceReader browser preview](docs/reading-page.png)
 
-## 支持渠道
+![License](https://img.shields.io/github/license/moyuan10086/AliceReader-browser-extension?style=flat-square)
+![Manifest V3](https://img.shields.io/badge/Chrome%2FEdge-Manifest%20V3-blue?style=flat-square)
+![Platforms](https://img.shields.io/badge/platform-Chrome%20%7C%20Edge-lightgrey?style=flat-square)
 
-- MiniMax T2A：音色、`language_boost`、`emotion`、语速、音量、音调等 MiniMax 参数。
-- 豆包 Speech：模型、`speaker` 音色和采样率等豆包参数。
-- 阿里百炼：Qwen3-TTS 和 CosyVoice，分别使用各自的音色、语言和指令参数。
+一个轻量、可配置的网页划线朗读扩展。选中文本后即可调用 MiniMax、豆包 Speech 或阿里百炼生成语音，并在页面中显示可拖动播放器。
 
-设置页会根据当前渠道隐藏不适用的参数，避免跨平台音色或情绪 ID 混用。
+[GitHub 仓库](https://github.com/moyuan10086/AliceReader-browser-extension) · [桌面版](https://github.com/moyuan10086/AliceReader-desktop) · [MIT License](LICENSE)
 
-## 安装
+## ✨ 特性
+
+- 选中网页文本后快速朗读
+- MiniMax、豆包 Speech、阿里百炼三渠道
+- 按渠道切换音色、语言、情绪和速率参数
+- 阿里百炼同时支持 Qwen3-TTS 与 CosyVoice
+- 浮动播放器支持播放、暂停、重播、进度拖动和缓存
+- 句子时间线高亮和朗读状态反馈
+- API Key 仅保存在浏览器扩展本地存储
+
+## 🖼️ 界面预览
+
+![网页朗读](docs/reading-page.png)
+
+![播放状态](docs/reading-player.png)
+
+![渠道设置](docs/settings.png)
+
+## 📦 安装
 
 1. 打开 `chrome://extensions/` 或 `edge://extensions/`。
 2. 开启“开发者模式”。
-3. 选择“加载已解压的扩展”。
-4. 选择本目录 `AliceReader划线朗读插件`。
-5. 点击扩展图标打开设置页，填写对应渠道的 API Key。
+3. 点击“加载已解压的扩展”。
+4. 选择本目录。
+5. 点击扩展图标进入设置页，选择渠道并填写对应 API Key。
 
-API Key 只保存在浏览器扩展的本地存储中，不会写入源码。
+## ⚙️ 渠道配置
 
-## 使用
+### MiniMax
+
+使用 MiniMax T2A 接口，支持 MiniMax Voice ID、`language_boost`、`emotion`、`speed`、`vol`、`pitch` 和采样率。
+
+### 豆包 Speech
+
+使用豆包 Speech 流式接口，参数包括模型、`speaker` 音色和采样率。
+
+### 阿里百炼
+
+Qwen3-TTS 使用 `language_type` 和指令参数；CosyVoice 使用独立的 `SpeechSynthesizer` 接口、CosyVoice 音色、`language_hints`、`rate`、`volume`、`pitch` 和采样率。
+
+设置页会隐藏当前渠道不支持的字段，避免不同平台的 Voice ID 或情绪 ID 混用。
+
+## ▶️ 使用
 
 - 在网页中选中文本，点击浮动播放器的朗读按钮。
-- 也可以使用右键菜单“Read selected text aloud”。
+- 也可以使用右键菜单 `Read selected text aloud`。
 - 快捷键：`Alt+Shift+S`。
-- 测试页面：打开 `test-page.html` 验证扩展交互。
+- 使用 `test-page.html` 可快速验证扩展交互。
 
-## 注意事项
+## 🛠️ 开发
 
-- 阿里百炼 CosyVoice 使用北京地域的 `SpeechSynthesizer` HTTP API，音色必须选择 CosyVoice 音色 ID。
-- 部分浏览器内置页面、扩展商店页面和 PDF 内置阅读器不允许内容脚本运行。
-- 请不要把 API Key 提交到 Git 仓库。
+本项目不需要构建工具，直接加载目录即可开发。修改 `src/` 后，在扩展管理页点击“重新加载”。
+
+## ⚠️ 注意事项
+
+- 浏览器内置页面、扩展商店页面和部分 PDF 阅读器不允许内容脚本运行。
+- 阿里百炼 CosyVoice 当前接口仅适用于支持的地域和音色。
+- 请勿将 API Key 写入源码或提交到 Git 仓库。
