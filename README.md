@@ -1,14 +1,20 @@
-# AliceReader Browser Extension
-
-![AliceReader browser preview](docs/reading-page.png)
-
-![License](https://img.shields.io/github/license/moyuan10086/AliceReader-browser-extension?style=flat-square)
-![Manifest V3](https://img.shields.io/badge/Chrome%2FEdge-Manifest%20V3-blue?style=flat-square)
-![Platforms](https://img.shields.io/badge/platform-Chrome%20%7C%20Edge-lightgrey?style=flat-square)
-
-一个轻量、可配置的网页划线朗读扩展。选中文本后即可调用 MiniMax、豆包 Speech 或阿里百炼生成语音，并在页面中显示可拖动播放器。
-
-[GitHub 仓库](https://github.com/moyuan10086/AliceReader-browser-extension) · [桌面版](https://github.com/moyuan10086/AliceReader-desktop) · [MIT License](LICENSE)
+<br />
+<p align="center">
+  <img src="docs/reading-page.png" alt="AliceReader browser preview" width="900">
+  <h2 align="center" style="font-weight: 600">AliceReader Browser Extension</h2>
+  <p align="center">
+    <img src="https://img.shields.io/github/license/moyuan10086/AliceReader-browser-extension?style=flat-square" />
+    <img src="https://img.shields.io/badge/Chrome%2FEdge-Manifest%20V3-blue?style=flat-square" />
+    <img src="https://img.shields.io/badge/platform-Chrome%20%7C%20Edge-lightgrey?style=flat-square" />
+  </p>
+  <p align="center">
+    选中网页文本即可调用多平台语音合成，并在页面中显示可拖动播放器。
+    <br />
+    <a href="https://github.com/moyuan10086/AliceReader-browser-extension"><strong>🌎 GitHub 仓库</strong></a>&nbsp;&nbsp;|&nbsp;&nbsp;
+    <a href="https://github.com/moyuan10086/AliceReader-desktop"><strong>🖥️ 桌面版</strong></a>&nbsp;&nbsp;|&nbsp;&nbsp;
+    <a href="LICENSE"><strong>📜 MIT License</strong></a>
+  </p>
+</p>
 
 ## ✨ 特性
 
@@ -20,7 +26,7 @@
 - 句子时间线高亮和朗读状态反馈
 - API Key 仅保存在浏览器扩展本地存储
 
-## 🖼️ 界面预览
+## 🖼️ 截图
 
 ![网页朗读](docs/reading-page.png)
 
