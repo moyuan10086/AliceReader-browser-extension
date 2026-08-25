@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AliceReader 设置</title>
+    <link rel="stylesheet" href="options.css">
+  </head>
+  <body>
+    <main>
+      <h1>AliceReader 设置</h1>
+      <p>选择朗读渠道后，仅显示该平台支持的参数。API Key 只保存在本机浏览器扩展存储中。</p>
+      <form id="settings-form">
+        <label>朗读渠道<select id="provider"><option value="minimax">MiniMax</option><option value="doubao">豆包 Speech</option><option value="alibaba">阿里百炼</option></select></label>
+
+        <section data-provider-panel="minimax">
+          <h2>MiniMax T2A</h2>
+          <label>MiniMax API Key<input id="api-key" type="password" autocomplete="off" placeholder="Bearer token"></label>
+          <div class="grid">
+            <label>MiniMax 接口区域<select id="endpoint"><option value="https://api.minimaxi.com/v1/t2a_v2">Global - api.minimaxi.com</option><option value="https://api-bj.minimaxi.com/v1/t2a_v2">Beijing - api-bj.minimaxi.com</option></select></label>
+            <label>MiniMax 模型<select id="model"><option value="speech-2.8-turbo">speech-2.8-turbo 快速</option><option value="speech-2.8-hd">speech-2.8-hd 高质量</option><option value="speech-2.6-turbo">speech-2.6-turbo</option><option value="speech-2.6-hd">speech-2.6-hd</option></select></label>
+            <label>MiniMax 音色<select id="voice-preset"><option value="English_expressive_narrator">English - expressive narrator</option><option value="English_radiant_girl">English - radiant girl</option><option value="English_magnetic_voiced_man">English - magnetic man</option><option value="Chinese (Mandarin)_Lyrical_Voice">中文 - lyrical voice</option><option value="Chinese (Mandarin)_Warm_Girl">中文 - warm girl</option><option value="custom">自定义 MiniMax Voice ID</option></select></label>
+            <label id="minimax-custom-row">自定义 MiniMax Voice ID<input id="custom-voice-id" type="text" placeholder="仅选择自定义时使用"></label>
+            <label>MiniMax 语言增强（language_boost）<select id="language-boost"><option value="auto">auto 自动</option><option value="English">English 英语</option><option value="Chinese">Chinese 中文</option><option value="Japanese">Japanese 日语</option><option value="Korean">Korean 韩语</option><option value="Spanish">Spanish 西语</option><option value="French">French 法语</option></select></label>
+            <label>MiniMax 情绪（emotion）<select id="emotion"><option value="">不指定</option><option value="fluent">fluent 流畅</option><option value="calm">calm 平静</option><option value="happy">happy 开心</option><option value="surprised">surprised 惊讶</option><option value="whisper">whisper 低语</option></select></label>
+            <label>MiniMax 语速（speed）<input id="speed" type="number" min="0.5" max="2" step="0.05"></label>
+            <label>MiniMax 音量（vol）<input id="volume" type="number" min="0.1" max="10" step="0.1"></label>
+            <label>MiniMax 音调（pitch）<input id="pitch" type="number" min="-12" max="12" step="1"></label>
+            <label>MiniMax 采样率<select id="sample-rate"><option value="24000">24000</option><option value="32000">32000</option><option value="44100">44100</option></select></label>
+          </div>
+        </section>
+
+        <section data-provider-panel="doubao" hidden>
+          <h2>豆包 Speech</h2>
+          <label>豆包 Speech API Key<input id="doubao-api-key" type="password" autocomplete="off" placeholder="X-Api-Key"></label>
+          <div class="grid">
+            <label>豆包模型（X-Api-Resource-Id）<select id="doubao-model"><option value="seed-tts-2.0">seed-tts-2.0</option><option value="seed-icl-2.0">seed-icl-2.0（复刻音色）</option></select></label>
+            <label>豆包音色（speaker）<select id="doubao-voice"><option value="zh_female_vv_uranus_bigtts">Vivi 2.0 女声</option><option value="zh_male_beijingxiaoye_moon_bigtts">北京小爷 男声</option><option value="zh_female_wanwanxiaohe_moon_bigtts">湾湾小何 女声</option><option value="custom">自定义豆包 Speaker ID</option></select></label>
+            <label id="doubao-custom-row">自定义豆包 Speaker ID<input id="doubao-custom-voice" type="text" placeholder="复刻音色或其他 Speaker ID"></label>
+            <label>豆包采样率<select id="doubao-sample-rate"><option value="24000">24000</option><option value="16000">16000</option></select></label>
+          </div>
+        </section>
+
+        <section data-provider-panel="alibaba" hidden>
+          <h2>阿里百炼 TTS</h2>
+          <label>阿里百炼 API Key<input id="alibaba-api-key" type="password" autocomplete="off" placeholder="DashScope API Key"></label>
+          <div class="grid">
+            <label>阿里模型<select id="alibaba-model"><option value="qwen3-tts-flash">qwen3-tts-flash</option><option value="qwen3-tts-instruct-flash">qwen3-tts-instruct-flash</option><option value="cosyvoice-v3-flash">cosyvoice-v3-flash</option></select></label>
+            <label>阿里音色（voice）<select id="alibaba-voice"></select></label>
+            <label id="alibaba-custom-row">自定义阿里 Voice ID<input id="alibaba-custom-voice" type="text" placeholder="系统、复刻或设计音色 ID"></label>
+            <label>阿里语言参数<select id="alibaba-language"></select></label>
+            <label id="alibaba-instruction-row">阿里指令（instructions / instruction）<input id="alibaba-instruction" type="text" placeholder="仅支持指令的模型使用"></label>
+          </div>
+          <div class="grid" id="alibaba-cosy-controls">
+            <label>CosyVoice 语速（rate）<input id="alibaba-rate" type="number" min="0.5" max="2" step="0.05"></label>
+            <label>CosyVoice 音量（volume）<input id="alibaba-volume" type="number" min="0" max="100" step="1"></label>
+            <label>CosyVoice 音调（pitch）<input id="alibaba-pitch" type="number" min="0.5" max="2" step="0.05"></label>
+            <label>CosyVoice 采样率<select id="alibaba-sample-rate"><option value="24000">24000</option><option value="22050">22050</option><option value="16000">16000</option><option value="44100">44100</option><option value="48000">48000</option></select></label>
+          </div>
+        </section>
+
+        <label class="check"><input id="auto-hide" type="checkbox">读完后自动隐藏悬浮窗</label>
+        <div class="actions"><button type="submit">保存设置</button><button id="test" type="button">测试朗读</button><span id="status" role="status"></span></div>
+      </form>
+    </main>
+    <script src="options.js"></script>
+  </body>
+</html>

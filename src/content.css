@@ -1,0 +1,21 @@
+.minmax-tts-selection-mark {
+  background: rgba(143, 244, 255, 0.32) !important;
+  border-radius: 3px !important;
+  box-shadow: 0 0 0 1px rgba(27, 136, 255, 0.22), 0 0 10px rgba(143, 244, 255, 0.2) !important;
+}
+
+.minmax-tts-current-mark {
+  background: rgba(255, 220, 96, 0.55) !important;
+  border-radius: 3px !important;
+  box-shadow: 0 0 0 1px rgba(212, 151, 0, 0.2), 0 0 8px rgba(255, 220, 96, 0.22) !important;
+  color: inherit !important;
+}
+
+::highlight(minmax-tts-selection) {
+  background: rgba(143, 244, 255, 0.18);
+}
+
+::highlight(minmax-tts-current-sentence) {
+  background: rgba(255, 220, 96, 0.55);
+  color: inherit;
+}

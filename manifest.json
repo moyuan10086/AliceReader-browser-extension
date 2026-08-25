@@ -1,0 +1,63 @@
+{
+  "manifest_version": 3,
+  "name": "AliceReader",
+  "description": "Read selected web text with MiniMax, Doubao, or Alibaba TTS.",
+  "version": "1.0.0",
+  "permissions": ["contextMenus", "storage", "activeTab"],
+  "host_permissions": [
+    "https://api.minimaxi.com/*",
+    "https://api-bj.minimaxi.com/*",
+    "https://*.minimaxi.com/*",
+    "https://*.minimax.chat/*",
+    "https://openspeech.bytedance.com/*",
+    "https://dashscope.aliyuncs.com/*",
+    "https://dashscope-intl.aliyuncs.com/*",
+    "https://*.aliyuncs.com/*"
+  ],
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "options_ui": {
+    "page": "src/options.html",
+    "open_in_tab": true
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/content.js"],
+      "css": ["src/content.css"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["assets/*.png", "assets/icons/*.png", "assets/skins/*.png"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "commands": {
+    "read-selection": {
+      "suggested_key": {
+        "default": "Alt+Shift+S"
+      },
+      "description": "Read selected text aloud"
+    }
+  },
+  "action": {
+    "default_title": "MinMax TTS Shadow Reader",
+    "default_popup": "src/popup.html",
+    "default_icon": {
+      "16": "assets/icons/icon-16.png",
+      "32": "assets/icons/icon-32.png",
+      "48": "assets/icons/icon-48.png",
+      "128": "assets/icons/icon-128.png"
+    }
+  },
+  "icons": {
+    "16": "assets/icons/icon-16.png",
+    "32": "assets/icons/icon-32.png",
+    "48": "assets/icons/icon-48.png",
+    "128": "assets/icons/icon-128.png"
+  }
+}
